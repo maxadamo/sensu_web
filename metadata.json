@@ -1,12 +1,12 @@
 {
   "name": "maxadamo-sensu_web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Massimiliano Adamo <maxadamo@gmail.com>",
   "summary": "Sensu Go Web",
   "license": "GPL-3.0",
-  "source": "https://github.com/maxadamo/galera_proxysql",
-  "project_page": "https://github.com/maxadamo/galera_proxysql",
-  "issues_url": "https://github.com/maxadamo/galera_proxysql/issues",
+  "source": "https://github.com/maxadamo/sensu_web",
+  "project_page": "https://github.com/maxadamo/sensu_web",
+  "issues_url": "https://github.com/maxadamo/sensu_web/issues",
   "dependencies": [
     {
       "name": "puppet-git",
