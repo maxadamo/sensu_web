@@ -4,7 +4,6 @@
 
 1. [Description](#description)
 1. [Setup](#setup)
-    * [Beginning with sensu_web](#beginning-with-sensu_web)
 1. [Usage](#usage)
 1. [Reference](#reference)
 1. [Limitations](#limitations)
@@ -14,11 +13,9 @@
 
 Starting from version 6.0 of Sensu GO, the Web UI has been taken out from the community version and it's now a different application.  
 This module sets up Sensu GO Web on Sensu 6.0 and higher.  
-The manifest was taken from the official [official sensu module](https://github.com/sensu/sensu-puppet) and since it will be removed from there, it is now being offered as a separate module.
+The manifest was taken from the [official sensu module](https://github.com/sensu/sensu-puppet) and since it will be removed from there, it is now being offered as a separate module.
 
 ## Setup
-
-### Beginning with sensu_web
 
 The module works only in conjunction with the [official sensu module](https://github.com/sensu/sensu-puppet) and it requires a modern system, runing systemd.  
 
@@ -41,12 +38,13 @@ or you may want to use a specific git release for the Sensu Web application:
 class { 'sensu_web':
   revision => 'v1.2.3';
 }
-
 ```
 
 a full list of paramters is available inside `init.pp`
 
 ## Reference
+
+* the official [Puppet module for Sensu](https://github.com/sensu/sensu-puppet)
 
 ## Limitations
 
@@ -59,4 +57,4 @@ Feel free to make pull requests and/or open issues on [my GitHub Repository](htt
 
 ## Release Notes/Contributors/Etc. **Optional**
 
-special thanks to [Garrett Honeycutt](@ghoneycutt) and [treydock](treydock)
+special thanks to [Garrett Honeycutt](https://github.com/ghoneycutt) and [treydock](https://github.com/treydock)
