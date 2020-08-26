@@ -19,8 +19,8 @@ The manifest was taken from the [official sensu module](https://github.com/sensu
 
 The module works only in conjunction with the [official sensu module](https://github.com/sensu/sensu-puppet) and it requires a modern system, runing systemd.  
 
-1. First, the application is pulled by this git repository: https://github.com/sensu/web.git
-2. Then, the application is installed through the tool called `yarn`.  
+1. First, the application is pulled from the git repository: https://github.com/sensu/web.git
+2. Then, the application is installed with the tool called `yarn`.  
 
 The version of the application is the release number defined in Github
 
@@ -32,7 +32,7 @@ you can use the defaults:
 include sensu_web
 ```
 
-or you may want to use a specific git release for the Sensu Web application:
+or you may want to the version:
 
 ```puppet
 class { 'sensu_web':

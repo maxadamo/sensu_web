@@ -1,6 +1,6 @@
 {
   "name": "maxadamo-sensu_web",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Massimiliano Adamo <maxadamo@gmail.com>",
   "summary": "Sensu Go Web",
   "license": "GPL-3.0",
