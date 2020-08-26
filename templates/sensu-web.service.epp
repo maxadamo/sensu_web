@@ -1,0 +1,16 @@
+[Unit]
+Description=Sensu Go Web
+After=network-online.target multi-user.target
+Wants=network-online.target
+
+[Service]
+Environment=NODE_ENV=production
+Environment=PORT=<%= $sensu_web::port %>
+Environment=API_URL=<%= $sensu_web::api_url %>
+WorkingDirectory=<%= $sensu_web::install_dir %>
+User=<%= $sensu_web::service_user %>
+Group=<%= $sensu_web::service_group %>
+ExecStart=/usr/bin/yarn node scripts serve
+
+[Install]
+WantedBy=multi-user.target

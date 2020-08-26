@@ -14,14 +14,14 @@
 #   Path of where to install Sensu web
 # @param port
 #   Port to use for Sensu Web
-#   Default is 9080
+#   Default is 3000
 #   Changing the value below 1024 requires setting service_user=root and service_group=root
 # @param service_user
 #   The user to run sensu-web service as
-#   Defaults to value defined for sensu::user parameter
+#   Defaults to root
 # @param service_group
 #   The group to run sensu-web service as
-#   Defaults to value defined for sensu::group parameter
+#   Defaults to root
 #
 class sensu_web (
   Optional[String] $revision        = 'v1.0.1',
@@ -33,7 +33,7 @@ class sensu_web (
 ) {
 
   if $facts['service_provider'] != 'systemd' {
-    fail('Class geant_sensu::server::web is only supported on systems that support systemd')
+    fail('Class sensu_web is only supported on systems that support systemd')
   }
 
   include sensu
@@ -82,7 +82,7 @@ class sensu_web (
   }
 
   systemd::unit_file { 'sensu-web.service':
-    content => template("${module_name}/sensu-web.service.erb"),
+    content => epp("${module_name}/sensu-web.service.epp"),
     notify  => Service['sensu-web'],
   }
 
