@@ -12,7 +12,7 @@
 
 ## Description
 
-Starting from version 6.0 of Sensu GO, the Web UI in the community version has been taken out and it's now a separate application.  
+Starting from version 6.0 of Sensu GO, the Web UI has been taken out from the community version and it's now a different application.  
 This module sets up Sensu GO Web on Sensu 6.0 and higher.  
 The manifest was taken from the official [official sensu module](https://github.com/sensu/sensu-puppet) and since it will be removed from there, it is now being offered as a separate module.
 
@@ -43,6 +43,8 @@ class { 'sensu_web':
 }
 
 ```
+
+a full list of paramters is available inside `init.pp`
 
 ## Reference
 
