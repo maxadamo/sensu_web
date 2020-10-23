@@ -32,7 +32,7 @@ you can use the defaults:
 include sensu_web
 ```
 
-or you may want to the version:
+or you can specify a version (through the git tags availabe on https://github.com/sensu/web.git):
 
 ```puppet
 class { 'sensu_web':
@@ -42,6 +42,12 @@ class { 'sensu_web':
 
 a full list of paramters is available inside `init.pp`
 
+you also need to increase the system-wide limit (`sysctl` paramter):
+
+```conf
+fs.inotify.max_user_watches=524288
+```
+
 ## Reference
 
 * the official [Puppet module for Sensu](https://github.com/sensu/sensu-puppet)
@@ -50,6 +56,7 @@ a full list of paramters is available inside `init.pp`
 
 * No Spec test available yet
 * No changelog is available
+* sysctl parameter not handled through this module
 
 ## Development
 
