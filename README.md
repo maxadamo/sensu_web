@@ -8,6 +8,7 @@
 1. [Reference](#reference)
 1. [Limitations](#limitations)
 1. [Development](#development)
+1. [Release Notes/Contributors](#Release%20Notes/Contributors)
 
 ## Description
 
@@ -19,10 +20,16 @@ The manifest was taken from the [official sensu module](https://github.com/sensu
 
 The module works only in conjunction with the [official sensu module](https://github.com/sensu/sensu-puppet) and it requires a modern system, runing systemd.  
 
-1. First, the application is pulled from the git repository: https://github.com/sensu/web.git
+1. First, the application is pulled from the repository: [https://github.com/sensu/web.git](https://github.com/sensu/web.git)
 2. Then, the application is installed with the tool called `yarn`.  
 
 The version of the application is the release number defined in Github
+
+You also need to increase the `sysctl` system-wide limit as shown below:
+
+```conf
+fs.inotify.max_user_watches=524288
+```
 
 ## Usage
 
@@ -32,7 +39,7 @@ you can use the defaults:
 include sensu_web
 ```
 
-or you can specify a version (through the git tags availabe on https://github.com/sensu/web.git):
+or you can specify a version (through the git tags availabe on [https://github.com/sensu/web.git](https://github.com/sensu/web.git)):
 
 ```puppet
 class { 'sensu_web':
@@ -42,26 +49,20 @@ class { 'sensu_web':
 
 a full list of paramters is available inside `init.pp`
 
-you also need to increase the system-wide limit (`sysctl` paramter):
-
-```conf
-fs.inotify.max_user_watches=524288
-```
-
 ## Reference
 
 * the official [Puppet module for Sensu](https://github.com/sensu/sensu-puppet)
 
 ## Limitations
 
-* No Spec test available yet
-* No changelog is available
-* sysctl parameter not handled through this module
+* No Spec test available
+* No changelog available
+* sysctl parameter not handled by this module
 
 ## Development
 
 Feel free to make pull requests and/or open issues on [my GitHub Repository](https://github.com/maxadamo/sensu_web)
 
-## Release Notes/Contributors/Etc. **Optional**
+## Release Notes/Contributors
 
 special thanks to [Garrett Honeycutt](https://github.com/ghoneycutt) and [treydock](https://github.com/treydock)
