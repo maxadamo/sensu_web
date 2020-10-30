@@ -8,7 +8,7 @@
 1. [Reference](#reference)
 1. [Limitations](#limitations)
 1. [Development](#development)
-1. [Release Notes/Contributors](#Release%20Notes/Contributors)
+1. [Release Notes and Contributors](#Release%20Notes%20and%20Contributors)
 
 ## Description
 
@@ -63,6 +63,6 @@ a full list of paramters is available inside `init.pp`
 
 Feel free to make pull requests and/or open issues on [my GitHub Repository](https://github.com/maxadamo/sensu_web)
 
-## Release Notes/Contributors
+## Release Notes and Contributors
 
 special thanks to [Garrett Honeycutt](https://github.com/ghoneycutt) and [treydock](https://github.com/treydock)
