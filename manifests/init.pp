@@ -25,7 +25,7 @@
 #
 class sensu_web (
   Optional[String] $revision        = 'v1.0.1',
-  String $source                    = 'https://github.com/sensu/web.git',
+  Stdlib::HTTPSUrl $source          = 'https://github.com/sensu/web.git',
   Stdlib::Absolutepath $install_dir = '/opt/sensu-web',
   Stdlib::Port $port                = 3000,
   Optional[String] $service_user    = root,

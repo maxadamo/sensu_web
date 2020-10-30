@@ -3,7 +3,7 @@
 #### Table of Contents
 
 1. [Description](#description)
-1. [Setup](#setup)
+1. [Before you start](#Before-you-start)
 1. [Usage](#usage)
 1. [Reference](#reference)
 1. [Limitations](#limitations)
@@ -12,20 +12,19 @@
 
 ## Description
 
-Starting from version 6.0 of Sensu GO, the Web UI has been taken out from the community version and it's now a different application.  
-This module sets up Sensu GO Web on Sensu 6.0 and higher.  
-The manifest was taken from the [official sensu module](https://github.com/sensu/sensu-puppet) and since it will be removed from there, it is now being offered as a separate module.
+Starting from version 6.0 of Sensu GO, the Web UI has been taken out from the community version and it's now a different application. This module sets up Sensu GO Web UI on Sensu 6.0 and higher.  
+The manifest was taken from the [official sensu module](https://github.com/sensu/sensu-puppet) and since it was removed from there, it is now being offered as a separate module.  
+It works only in conjunction with the [official sensu module](https://github.com/sensu/sensu-puppet) and it requires a modern system, runing systemd.  
+This is what the module does when the version number is changed:
 
-## Setup
+1. pulls the application from the repositoy [Sensu Web](https://github.com/sensu/web.git)
+2. installs the application using a tool called `yarn`.  
 
-The module works only in conjunction with the [official sensu module](https://github.com/sensu/sensu-puppet) and it requires a modern system, runing systemd.  
+The version is the release defined in [Sensu Web Github Release](https://github.com/sensu/web/releases). A valid version number looks like: `v1.2.3`
 
-1. First, the application is pulled from the repository: [https://github.com/sensu/web.git](https://github.com/sensu/web.git)
-2. Then, the application is installed with the tool called `yarn`.  
+## Before you start
 
-The version of the application is the release number defined in Github
-
-You also need to increase the `sysctl` system-wide limit as shown below:
+You need to increase the `sysctl` system-wide limit as shown below (this is not handled by this module):
 
 ```conf
 fs.inotify.max_user_watches=524288
@@ -47,7 +46,7 @@ class { 'sensu_web':
 }
 ```
 
-a full list of paramters is available inside `init.pp`
+a full list of paramters is available inside the file `init.pp`
 
 ## Reference
 
