@@ -8,7 +8,7 @@
 1. [Reference](#reference)
 1. [Limitations](#limitations)
 1. [Development](#development)
-1. [Release Notes and Contributors](#Release%20Notes%20and%20Contributors)
+1. [Release Notes and Contributors](#Release-Notes-and-Contributors)
 
 ## Description
 
