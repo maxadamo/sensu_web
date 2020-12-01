@@ -38,8 +38,9 @@ class sensu_web (
 
   include sensu
   include git
-  include nodejs
   include yarn
+
+  class { 'nodejs': repo_url_suffix => '10.x'; }
 
   Package['nodejs'] -> Package['yarn']
 
