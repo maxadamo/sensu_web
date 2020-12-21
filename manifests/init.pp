@@ -49,7 +49,6 @@ class sensu_web (
     repo_url_suffix       => '10.x',
     nodejs_package_ensure => $nodejs_package_ensure;
   }
-
   Package['nodejs'] -> Package['yarn']
 
   $api_url = $sensu::api_url
