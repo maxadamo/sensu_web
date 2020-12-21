@@ -56,7 +56,6 @@ class sensu_web (
 
   file { [$install_dir, "${install_dir}/yarn"]:
     ensure => 'directory',
-    path   => $install_dir,
     owner  => $service_user,
     group  => $service_group,
     mode   => '0755',
