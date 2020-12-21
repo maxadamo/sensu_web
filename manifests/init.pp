@@ -49,12 +49,14 @@ class sensu_web (
     repo_url_suffix       => '10.x',
     nodejs_package_ensure => $nodejs_package_ensure;
   }
+
   Package['nodejs'] -> Package['yarn']
 
   $api_url = $sensu::api_url
 
-  file { [$install_dir, "${install_dir}/yarn"]:
-    ensure => directory,
+  file { 'sensu-web-dir':
+    ensure => 'directory',
+    path   => $install_dir,
     owner  => $service_user,
     group  => $service_group,
     mode   => '0755',
@@ -73,16 +75,16 @@ class sensu_web (
 
   exec { 'sensu-web-touch-install':
     path        => '/usr/bin:/bin',
-    command     => "touch ${install_dir}/yarn/.install",
+    command     => "touch ${install_dir}/.install",
     refreshonly => true,
     user        => $service_user,
     before      => Exec['sensu-web-install'],
   }
   exec { 'sensu-web-install':
     path    => '/usr/bin:/bin:/usr/sbin:/sbin',
-    command => "rm -rf ${install_dir}/node_modules && yarn install --modules-folder ${install_dir}/yarn/node_modules && rm -f ${install_dir}/yarn/.install",
+    command => "yarn install && rm -f ${install_dir}/.install",
     cwd     => $install_dir,
-    onlyif  => "test -f ${install_dir}/yarn/.install",
+    onlyif  => "test -f ${install_dir}/.install",
     timeout => 0,
     user    => $service_user,
     require => Package['yarn'],
