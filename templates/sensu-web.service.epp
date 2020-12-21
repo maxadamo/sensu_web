@@ -10,7 +10,7 @@ Environment=API_URL=<%= $sensu_web::api_url %>
 WorkingDirectory=<%= $sensu_web::install_dir %>
 User=<%= $sensu_web::service_user %>
 Group=<%= $sensu_web::service_group %>
-ExecStart=/usr/bin/yarn node scripts serve
+ExecStart=/usr/bin/yarn node scripts serve --modules-folder <%= $sensu_web::install_dir %>/yarn/node_modules
 
 [Install]
 WantedBy=multi-user.target
