@@ -55,18 +55,11 @@ class sensu_web (
   $api_url = $sensu::api_url
 
   file { [$install_dir, "${install_dir}/yarn"]:
-    ensure => 'directory',
+    ensure => directory,
     owner  => $service_user,
     group  => $service_group,
     mode   => '0755',
     before => Vcsrepo['sensu-web'],
-  }
-
-  # this is temporary (to clean some space)
-  -> file { "${install_dir}/node_modules":
-    ensure  => absent,
-    recurse => true,
-    force   => true;
   }
 
   vcsrepo { 'sensu-web':
@@ -88,7 +81,7 @@ class sensu_web (
   }
   exec { 'sensu-web-install':
     path    => '/usr/bin:/bin:/usr/sbin:/sbin',
-    command => "yarn install --modules-folder ${install_dir}/yarn/node_modules && rm -f ${install_dir}/yarn/.install",
+    command => "rm -rf ${install_dir}/node_modules && yarn install --modules-folder ${install_dir}/yarn/node_modules && rm -f ${install_dir}/yarn/.install",
     cwd     => $install_dir,
     onlyif  => "test -f ${install_dir}/yarn/.install",
     timeout => 0,
