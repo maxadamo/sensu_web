@@ -30,6 +30,11 @@ class sensu_web (
   Stdlib::Port $port                = 3000,
   Optional[String] $service_user    = root,
   Optional[String] $service_group   = root,
+  Optional[String] $nodejs_package_ensure = $facts['os']['family'] ? {
+    'Debian' => '10.23.0-1nodesource1',
+    'RedHat' => '10.23.0-1nodesource',
+    default => 'latest'
+  }
 ) {
 
   if $facts['service_provider'] != 'systemd' {
@@ -38,9 +43,12 @@ class sensu_web (
 
   include sensu
   include git
-  include nodejs
   include yarn
 
+  class { 'nodejs':
+    repo_url_suffix       => '10.x',
+    nodejs_package_ensure => $nodejs_package_ensure;
+  }
   Package['nodejs'] -> Package['yarn']
 
   $api_url = $sensu::api_url
