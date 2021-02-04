@@ -43,8 +43,8 @@ class sensu_web (
 
   include sensu
   include git
-  include yarn
 
+  class { 'yarn': install_method => 'npm'; }
   class { 'nodejs':
     repo_url_suffix       => '10.x',
     nodejs_package_ensure => $nodejs_package_ensure;
