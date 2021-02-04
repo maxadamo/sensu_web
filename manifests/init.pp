@@ -50,7 +50,7 @@ class sensu_web (
     nodejs_package_ensure => $nodejs_package_ensure;
   }
 
-  Package['nodejs'] -> Package['yarn']
+  Package['nodejs'] -> Class['yarn']
 
   $api_url = $sensu::api_url
 
