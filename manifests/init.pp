@@ -87,7 +87,7 @@ class sensu_web (
     onlyif  => "test -f ${install_dir}/.install",
     timeout => 0,
     user    => $service_user,
-    require => Package['yarn'],
+    require => Class['yarn'],
   }
 
   systemd::unit_file { 'sensu-web.service':
