@@ -9,6 +9,10 @@
   "issues_url": "https://github.com/maxadamo/sensu_web/issues",
   "dependencies": [
     {
+      "name": "camptocamp-systemd",
+      "version_requirement": ">= 2.11.0 <= 2.12.0"
+    },
+    {
       "name": "puppet-git",
       "version_requirement": ">= 1.4.1 <= 1.4.1"
     },
@@ -27,10 +31,6 @@
     {
       "name": "puppetlabs-stdlib",
       "version_requirement": ">= 6.3.0 <= 6.5.0"
-    },
-    {
-      "name": "puppetlabs-systemd",
-      "version_requirement": ">= 2.9.0 <= 2.9.0"
     },
     {
       "name": "sensu-puppet",
