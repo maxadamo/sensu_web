@@ -24,17 +24,14 @@
 #   Defaults to root
 #
 class sensu_web (
-  Optional[String] $revision        = 'v1.0.1',
+  Optional[String] $revision        = 'v1.2.0',
   Stdlib::HTTPSUrl $source          = 'https://github.com/sensu/web.git',
   Stdlib::Absolutepath $install_dir = '/opt/sensu-web',
   Stdlib::Port $port                = 3000,
   Optional[String] $service_user    = root,
   Optional[String] $service_group   = root,
-  Optional[String] $nodejs_package_ensure = $facts['os']['family'] ? {
-    'Debian' => '10.23.0-1nodesource1',
-    'RedHat' => '10.23.0-1nodesource',
-    default => 'latest'
-  }
+  Optional[String] $nodejs_major    = '15',
+  Optional[String] $nodejs_package_ensure = 'latest'
 ) {
 
   if $facts['service_provider'] != 'systemd' {
@@ -50,7 +47,7 @@ class sensu_web (
   }
 
   class { 'nodejs':
-    repo_url_suffix       => '10.x',
+    repo_url_suffix       => "${nodejs_major}.x",
     nodejs_package_ensure => $nodejs_package_ensure;
   }
 
